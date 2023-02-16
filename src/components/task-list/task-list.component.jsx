@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 
 
 const TaskList = ( {notes, handleSetNote, handleDeleteNote,  handleCompleteNote } ) =>{
-
-    console.log('printing notes', notes);
     
     return(
         <TaskListBoxStyle item>
@@ -15,7 +13,7 @@ const TaskList = ( {notes, handleSetNote, handleDeleteNote,  handleCompleteNote 
            <TaskListStyle  >
 
                     {notes.length > 0  ? notes.map(note=>(
-                        <Task note={note} onClick={ ()=>handleSetNote(note) } onDelete={ ()=>handleDeleteNote(note.id)}  onComplete={()=>handleCompleteNote(note)} />
+                        <Task key={note.id} note={note} onClick={ ()=>handleSetNote(note) } onDelete={ ()=>handleDeleteNote(note.id)}  onComplete={()=>handleCompleteNote(note)} />
                     )) : <h2> You have no notes at this moment</h2>}
 
            </TaskListStyle>

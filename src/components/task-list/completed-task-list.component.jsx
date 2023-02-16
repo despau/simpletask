@@ -5,7 +5,7 @@ import  Typography  from '@mui/material/Typography';
 
 
 
-const CompletedTaskList = ({ completedNotes }) =>{
+const CompletedTaskList = ({ completedNotes, handleRestoreNote }) =>{
     return(
         <CompletedTaskListBoxStyle>
             <Typography variant='h3' >Your Completed Tasks</Typography>
@@ -13,7 +13,7 @@ const CompletedTaskList = ({ completedNotes }) =>{
 
            {
                 completedNotes.length > 0  ? completedNotes.map(note=>(
-                <CompletedTask text={note.text}  /> )
+                <CompletedTask key={note.id} text={note.text} onClick={ ()=>handleRestoreNote(note) } note={note} /> )
                 ) : <h2> No completed notes at this time </h2> 
             }
 

@@ -34,20 +34,27 @@ const App = ( { signOut, user } ) => {
   useEffect( () => {
     
     getAllNotes();
+    
+
   }, [])
 
 
   const getAllNotes = async () => {
     const result = await API.graphql( graphqlOperation ( listNotes ) );
     const allNotes = result.data.listNotes.items;
-    console.log('all notes : ', allNotes)
-    setNotes(allNotes);      
+    
+    //separate notes.
+    const inCompleteNotes = allNotes.filter( note => note.completed === false );
+    setNotes(inCompleteNotes);
+
+    const CompleteNotes = allNotes.filter( note => note.completed === true );
+    setCompletedNotes(CompleteNotes);
+     
   }
 
 
   const handleChangeNote = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setNote(e.target.value);
     
   }
@@ -69,7 +76,6 @@ const App = ( { signOut, user } ) => {
       text: note,
       completed: false
     }
-
 
     if( hasExistingNote() ) {
       
@@ -111,7 +117,6 @@ const App = ( { signOut, user } ) => {
    const updatedNote = updatedNoteResult.data.updateNote;
 
     const noteIndex = notes.findIndex( note => note.id === updatedNote.id);
-    // const updatedInput = { id: updatedNote.id, text: updatedNote.text};
    const updatedNotesArray = [
       ...notes.slice(0, noteIndex),
       updatedNote,
@@ -123,13 +128,47 @@ const App = ( { signOut, user } ) => {
   }
 
   const handleCompleteNote = async item => {
+      
+      const input = {
+        id: item.id,
+        completed: true
+      }
 
-    //code go here
-    const remainingNotes = notes.filter( note => note.id !== item.id);
-    const completeInput = { id: item.id, text: item.text}
-    setCompletedNotes( [completeInput, ...completedNotes])
-    setNotes(remainingNotes);
+      const updatedNoteResult = await API.graphql(graphqlOperation(updateNote, {input}));
+      const updatedNote = updatedNoteResult.data.updateNote;
+     
+
+      const markedNote = notes.filter ( note => note.id !== updatedNote.id);
+      console.log("MARKED NOTE: ", markedNote)
+  
+      setNotes(markedNote);
+      setCompletedNotes([updatedNote, ...completedNotes]);
+      setNote('');
+      setNoteId('')
+
   }
+
+  const handleRestoreNote = async item => {
+      
+    const input = {
+      id: item.id,
+      completed: false
+    }
+
+    const updatedNoteResult = await API.graphql(graphqlOperation(updateNote, {input}));
+    const updatedNote = updatedNoteResult.data.updateNote;
+   
+    const markedNote = completedNotes.filter ( note => note.id !== updatedNote.id);
+
+    setNotes([updatedNote, ...notes]);
+    setCompletedNotes(markedNote);   
+    
+    setNote('');
+    setNoteId('')
+
+}
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -146,7 +185,7 @@ const App = ( { signOut, user } ) => {
               {/* Completed List */}
               <ListContainertStyles order={{ xs: 3, sm: 1, md: 1, lg: 1 }} gap={3} xs={10} sm={4} md={3} item width='30%' bgcolor='green'>
                 
-                <CompletedTaskList completedNotes={completedNotes} />
+                <CompletedTaskList completedNotes={completedNotes} handleRestoreNote={handleRestoreNote} />
                 
               </ListContainertStyles>
 

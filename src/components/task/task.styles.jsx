@@ -24,8 +24,17 @@ export const TaskListItemIconCheckStyle = styled(ListItemIcon)({
         fontSize: '2rem'
        }
 });
+
 export const TaskListItemIconDeleteStyle = styled(ListItemIcon)({
     color: `${theme.palette.common.red}`,
+    fontSize: '2.2rem',
+    [theme.breakpoints.down("sm")] : {
+        fontSize: '2rem'
+       }
+});
+
+export const CompletedTaskListItemIconDeleteStyle = styled(ListItemIcon)({
+    color: `${theme.palette.common.green}`,
     fontSize: '2.2rem',
     [theme.breakpoints.down("sm")] : {
         fontSize: '2rem'
