@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-simpletask-dev-151756-authRole",
+      "UnauthRoleArn": "arn:aws:iam::695077516402:role/amplify-simpletask-dev-151756-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::695077516402:role/amplify-simpletask-dev-151756-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-simpletask-dev-151756-deployment",
+      "UnauthRoleName": "amplify-simpletask-dev-151756-unauthRole",
+      "StackName": "amplify-simpletask-dev-151756",
+      "StackId": "arn:aws:cloudformation:us-east-1:695077516402:stack/amplify-simpletask-dev-151756/ff8ea980-ae36-11ed-99b8-0e16807f6ebf",
+      "AmplifyAppId": "d3k6oev9ajfvq2"
+    },
+    "categories": {
+      "auth": {
+        "simpletask20593d59": {}
+      },
+      "api": {
+        "simpletask": {}
+      }
+    }
+  }
+}
