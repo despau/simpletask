@@ -179,7 +179,7 @@ const App = ( { signOut, user } ) => {
         <ContentStyles xs={12} item container >
             
             {/* Welcome */}
-            <Typography variant='h2' marginLeft='3rem' marginTop='9rem'>Welcome to your TASKS, {user.username}</Typography>
+            <Typography variant='h2' className='welcome' marginLeft='3rem' marginTop='9rem'>Welcome to your TASKS, {user.username}</Typography>
             {/* main-content */}
             <MainContentStyles  item container  >
               {/* Completed List */}

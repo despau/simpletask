@@ -14,7 +14,7 @@ const Task = ({note, onClick, onDelete, onComplete }) =>{
 
                 <TaskListIconBoxStyle>
                     <TaskListItemIconCheckStyle>
-                        <CheckIcon fontSize='inherit' onClick={   onComplete }  />
+                        <CheckIcon aria-label='Complete Task Item' fontSize='inherit' onClick={   onComplete }  />
                     </TaskListItemIconCheckStyle>
 
                     <TaskListItemIconDeleteStyle>

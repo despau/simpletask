@@ -13,8 +13,8 @@ const TaskForm = ({note, noteId, onSubmit, inputChange} ) => {
     <TaskFormStyles component='form' container onSubmit={onSubmit}>
         <Typography  variant='h3' >Add a Task</Typography>
         <InputBoxStyles >
-            <InputStyles required type='text' disableUnderline value={note}  onChange= {inputChange}  />
-            <CustomButton type='submit' label={ noteId ? "Update Note" : "Add note" } />
+            <InputStyles name='task-input' required type='text' disableUnderline value={note}  onChange= {inputChange}  />
+            <CustomButton  type='submit' label={ noteId ? "Update Note" : "Add note" } />
         </InputBoxStyles>
         
     </TaskFormStyles>
