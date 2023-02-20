@@ -16,8 +16,6 @@ export const TaskListBoxStyle = styled(Box)({
     width: '100%',
     height: '67%',
     [theme.breakpoints.down("sm")]: {
-        backgroundColor: 'yellow',
-        // height: '50%',
         marginBottom: '10rem'
     }
 
@@ -32,7 +30,6 @@ export const CompletedTaskListBoxStyle = styled(Box)({
     width: '100%',
     height: '100%',
     [theme.breakpoints.down("md")]: {
-        backgroundColor: 'yellow',
         marginBottom: '5rem'
     }
 

@@ -12,7 +12,7 @@ const CompletedTaskList = ({ completedNotes, handleRestoreNote }) =>{
            <CompletedTaskListStyle >
 
            {
-                completedNotes.length > 0  ? completedNotes.map(note=>(
+                completedNotes.length  ? completedNotes.map(note=>(
                 <CompletedTask key={note.id} text={note.text} onClick={ ()=>handleRestoreNote(note) } note={note} /> )
                 ) : <h2> No completed notes at this time </h2> 
             }

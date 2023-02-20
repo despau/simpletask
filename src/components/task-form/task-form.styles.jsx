@@ -28,7 +28,6 @@ export const TaskFormStyles = styled(Grid)({
     margin: '1rem',
     width: '100%',
     [theme.breakpoints.down("sm")]: {
-      // backgroundColor: 'blue',
       flexDirection: 'column',
       gap: 2,
       justifyContent: 'space-around',
