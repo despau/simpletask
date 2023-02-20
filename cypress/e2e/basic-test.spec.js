@@ -7,7 +7,7 @@ describe('Authentication Test Suite', () => {
         cy.visit('http://localhost:3000/')
     } )
 
-    it('Login in the Application', () => {
+    it('Login in the Application and Create a Task', () => {
 
         //find the user textfield
         cy.get('[name=username]').type("kfgfvkkxedvosxyioa@tcwlx.co")
